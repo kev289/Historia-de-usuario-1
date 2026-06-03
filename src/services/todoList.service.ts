@@ -38,6 +38,17 @@ export const updateTodo = async (id: string, task: TaskPayload) => {
   return res.json() as Promise<{ data: Task }>;
 };
 
+export const getTodoListById = async (id:string) => {
+  try {
+    const res = await fetch(`/api/todolist/${id}`);
+    const data = res.json();
+
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export const deleteTodo = async (id: string) => {
   const res = await fetch(`/api/todolist?id=${id}`, {
     method: "DELETE",

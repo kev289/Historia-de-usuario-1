@@ -1,6 +1,6 @@
 "use client"
 
-import { getUsers } from "@/src/services/users"
+import { getUsers } from "@/src/services/users.service"
 import { useState } from "react";
 
 // Interfaz de propiedades del usuario

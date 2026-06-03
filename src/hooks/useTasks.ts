@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { createTodo, deleteTodo, getTodoList, updateTodo } from "@/src/services/todoList";
+import { createTodo, deleteTodo, getTodoList, updateTodo } from "@/src/services/todoList.service";
 import type { Task } from "@/src/types/task";
 
 const getVisibleTime = (task: Task, now: number) => {
