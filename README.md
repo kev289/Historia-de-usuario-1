@@ -49,6 +49,6 @@ http://localhost:3000
 ## Despliegue con ultima actualizacion de ruta protegida
 
 ```
-https://historia-de-usuario-1.vercel.app/todolist/6a2028eba24315827e7a8cf2
+https://historia-de-usuario-1.vercel.app/todolist/[ID_de_todo_list]
 ```
 
