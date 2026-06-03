@@ -16,7 +16,6 @@ const DetailsTodoList = async ({
     todo = await Todolist.findById(id);
   } catch (err) {
     console.error("Error fetching todo:", err);
-    // Si el ID tiene formato inválido para MongoDB, arrojamos 404
     notFound();
   }
 
