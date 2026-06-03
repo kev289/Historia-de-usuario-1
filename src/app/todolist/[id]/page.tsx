@@ -1,4 +1,6 @@
-import { getTodoListById } from "@/src/services/todoList.service";
+import Todolist from "@/src/models/todolist";
+import conectionDB from "@/src/lib/database";
+import { notFound } from "next/navigation";
 
 const DetailsTodoList = async ({
   params,
@@ -7,27 +9,30 @@ const DetailsTodoList = async ({
 }) => {
   const { id } = await params;
 
-  const fetchData = async () => {
+  await conectionDB();
 
-    try {
-    const res = await fetch(`/api/todolist/${id}`);
-    const data = res.json();
-
-    return data;
+  let todo = null;
+  try {
+    todo = await Todolist.findById(id);
   } catch (err) {
-    console.error(err);
+    console.error("Error fetching todo:", err);
+    // Si el ID tiene formato inválido para MongoDB, arrojamos 404
+    notFound();
   }
-  };
 
-  fetchData();
-
-  console.log(id);
+  if (!todo) {
+    notFound();
+  }
 
   return (
-    <div>
-      <h1>Detalles de la TodoList</h1>
-      <div> El id es : {id}</div>
-      
+    <div style={{ padding: "2rem", maxWidth: "600px", margin: "0 auto" }}>
+      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Detalles de la TodoList</h1>
+      <div style={{ padding: "1.5rem", borderRadius: "8px", border: "1px solid #ccc", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
+        <p><strong>ID:</strong> {id}</p>
+        <p><strong>Título:</strong> {todo.title}</p>
+        <p><strong>Estado:</strong> {todo.status}</p>
+        {todo.time > 0 && <p><strong>Tiempo transcurrido:</strong> {todo.time} segundos</p>}
+      </div>
     </div>
   );
 };  

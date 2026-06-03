@@ -5,12 +5,19 @@ await conectionDB();
 
 export async function GET(
     request: Request,
-    { params }: { params: Promise<{ dato: string }> },
+    { params }: { params: Promise<{ id: string }> },
 ) {
 
-    const { dato } = await params;
+    const { id } = await params;
 
-    const datos = await Todolist.find({ _id: dato });
+    const datos = await Todolist.findById(id);
+
+    if (!datos) {
+        return Response.json({
+            error: "No se encontró el elemento",
+            code: 404,
+        }, { status: 404 });
+    }
 
     return Response.json({
         data: datos,
