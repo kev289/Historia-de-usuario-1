@@ -25,9 +25,9 @@ const DetailsTodoList = async ({
   }
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "600px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Detalles de la TodoList</h1>
-      <div style={{ padding: "1.5rem", borderRadius: "8px", border: "1px solid #ccc", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
+    <div>
+      <h1>Detalles de la TodoList</h1>
+      <div>
         <p><strong>ID:</strong> {id}</p>
         <p><strong>Título:</strong> {todo.title}</p>
         <p><strong>Estado:</strong> {todo.status}</p>
