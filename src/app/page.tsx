@@ -45,6 +45,7 @@ function App() {
         ) : (
           tasks.map((todo) => (
             <Card
+              id={todo.id}
               key={todo.id}
               title={todo.title}
               status={todo.status}

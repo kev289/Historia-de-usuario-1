@@ -56,7 +56,9 @@
   margin-top: 16px;
 }
 
-.card-actions button {
+
+/* Button base */
+.btn {
   flex: 1;
   padding: 8px 12px;
   font-size: 0.85rem;
@@ -67,29 +69,25 @@
   color: #ffffff;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
-.card.pending .card-actions button:first-child {
-  background-color: #2563eb;
-}
-.card.pending .card-actions button:first-child:hover {
-  background-color: #1d4ed8;
+.btn:active {
+  transform: translateY(1px);
 }
 
-.card.inProgress .card-actions button:first-child {
-  background-color: #10b981;
-}
-.card.inProgress .card-actions button:first-child:hover {
-  background-color: #059669;
-}
+/* Specific button roles */
+.btn-start { background-color: #2563eb; }
+.btn-start:hover { background-color: #1d4ed8; }
 
-.card-actions button:last-child {
-  background-color: #ef4444;
-}
-.card-actions button:last-child:hover {
-  background-color: #dc2626;
-}
+.btn-finish { background-color: #10b981; }
+.btn-finish:hover { background-color: #059669; }
+
+.btn-delete { background-color: #ef4444; }
+.btn-delete:hover { background-color: #dc2626; }
+
+.btn-details { background-color: #5b21b6; }
+.btn-details:hover { background-color: #4c1d95; }
 
 @keyframes pulse-glow {
   0% { box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2), var(--shadow); }

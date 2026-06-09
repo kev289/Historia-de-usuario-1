@@ -1,6 +1,10 @@
+"useClient"
+
 import type { TaskStatus } from "@/src/types/task";
+import { useRouter } from "next/navigation";
 
 interface CardProps {
+    id: string;
     title: string;
     status: TaskStatus;
     time: number;
@@ -19,12 +23,14 @@ const formatTime = (seconds: number): string => {
     return `${formattedMins}:${formattedSecs}`
 }
 
-export const Card = ({ title, status, time, onStart, onFinish, onDelete }: CardProps) => {
+export const Card = ({ id, title, status, time, onStart, onFinish, onDelete }: CardProps) => {
     const statusLabel = {
         pending: "Pending",
         inProgress: "In Progress",
         done: "Done",
     }[status];
+
+    const router = useRouter();
 
     return (
         <div className={`card ${status}`}>
@@ -34,12 +40,21 @@ export const Card = ({ title, status, time, onStart, onFinish, onDelete }: CardP
 
             <div className="card-actions">
                 {status === "pending" && (
-                    <button onClick={onStart}>Iniciar</button>
+                    <button onClick={onStart} className="btn btn-start">
+                        Iniciar
+                    </button>
                 )}
                 {status === "inProgress" && (
-                    <button onClick={onFinish}>Finalizar</button>
+                    <button onClick={onFinish} className="btn btn-finish">
+                        Finalizar
+                    </button>
                 )}
-                <button onClick={onDelete}>Eliminar</button>
+                <button onClick={onDelete} className="btn btn-delete">
+                    Eliminar
+                </button>
+                <button onClick={() => router.push(`/todolist/${id}`)} className="btn btn-details">
+                    Ver detalles
+                </button>
             </div>
         </div>
 
